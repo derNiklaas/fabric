@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: gradle/wrapper-validation-action@v1
-      - run: ./gradlew checkVersion build publish github --stacktrace
+      - run: ./gradlew build publish github --stacktrace
         env:
           GITHUB_TOKEN: ${{ secrets.GH_API_KEY }}
