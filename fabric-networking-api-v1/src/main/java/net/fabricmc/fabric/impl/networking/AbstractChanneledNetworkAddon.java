@@ -112,7 +112,7 @@ public abstract class AbstractChanneledNetworkAddon<H> extends AbstractNetworkAd
 		final PacketByteBuf buf = this.createRegistrationPacket(this.getReceivableChannels());
 
 		if (buf != null) {
-			this.sendPacket(NetworkingImpl.REGISTER_CHANNEL, buf);
+			//this.sendPacket(NetworkingImpl.REGISTER_CHANNEL, buf);
 		}
 	}
 
