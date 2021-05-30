@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package net.fabricmc.fabric.impl.networking.client;
+/**
+ * The testmod for the Fabric Renderer API.
+ * Right now there is only one test here, but more tests may come to exist in the future.
+ * These tests are used to validate Indigo's implementation is correct, but these tests may also be useful for other implementations of the Fabric Renderer API.
+ *
+ * <p>Right now there is a simple test in the {@code simple} package which validates that simple meshes and quad emitters function.
+ * Future tests may look into testing things such as render materials or creating more advanced models.
+ */
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-
-@Environment(EnvType.CLIENT)
-public interface ClientPlayNetworkHandlerExtensions {
-	ClientPlayNetworkAddon getAddon();
-}
+package net.fabricmc.fabric.test.renderer;

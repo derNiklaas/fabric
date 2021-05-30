@@ -14,32 +14,25 @@
  * limitations under the License.
  */
 
-package net.fabricmc.fabric.mixin.object.builder;
+package net.fabricmc.fabric.test.renderer.mixin;
 
-import java.util.Map;
-
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-import net.minecraft.village.TradeOffers;
-import net.minecraft.village.VillagerProfession;
+import net.minecraft.client.render.WorldRenderer;
+import net.minecraft.client.world.ClientWorld;
+import net.minecraft.util.math.BlockPos;
 
-import net.fabricmc.fabric.impl.object.builder.TradeOfferInternals;
-
-@Mixin(TradeOffers.class)
-public abstract class TradeOffersMixin {
+@Mixin(ClientWorld.class)
+abstract class ClientWorldMixin extends WorldMixin {
 	@Shadow
 	@Final
-	public static Map<VillagerProfession, Int2ObjectMap<TradeOffers.Factory[]>> PROFESSION_TO_LEVELED_TRADE;
-	@Shadow
-	@Final
-	public static Int2ObjectMap<TradeOffers.Factory[]> WANDERING_TRADER_TRADES;
+	private WorldRenderer worldRenderer;
 
-	static {
-		// Cache the original trade lists
-		TradeOfferInternals.DEFAULT_VILLAGER_OFFERS = PROFESSION_TO_LEVELED_TRADE;
-		TradeOfferInternals.DEFAULT_WANDERING_TRADER_OFFERS = WANDERING_TRADER_TRADES;
+	@Override
+	public void scheduleBlockRerender(BlockPos pos) {
+		// Update the block at the position to trigger chunk re-render.
+		this.worldRenderer.updateBlock(null, pos, null, null, 0);
 	}
 }

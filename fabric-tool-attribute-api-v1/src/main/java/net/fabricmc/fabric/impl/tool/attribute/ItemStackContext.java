@@ -14,8 +14,12 @@
  * limitations under the License.
  */
 
-package net.fabricmc.fabric.impl.networking.server;
+package net.fabricmc.fabric.impl.tool.attribute;
 
-public interface ServerLoginNetworkHandlerExtensions {
-	ServerLoginNetworkAddon getAddon();
+import org.jetbrains.annotations.Nullable;
+
+import net.minecraft.entity.LivingEntity;
+
+public interface ItemStackContext {
+	void fabricToolAttributes_setContext(@Nullable LivingEntity contextEntity);
 }

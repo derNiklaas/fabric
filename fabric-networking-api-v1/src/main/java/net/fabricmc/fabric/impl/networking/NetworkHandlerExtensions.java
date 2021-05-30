@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-package net.fabricmc.fabric.impl.networking.server;
+package net.fabricmc.fabric.impl.networking;
 
-public interface ServerPlayNetworkHandlerExtensions {
-	ServerPlayNetworkAddon getAddon();
+public interface NetworkHandlerExtensions {
+	AbstractNetworkAddon<?> getAddon();
 }
