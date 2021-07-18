@@ -14,24 +14,22 @@
  * limitations under the License.
  */
 
-package net.fabricmc.fabric.mixin.structure;
+package net.fabricmc.fabric.test.lookup.item;
 
-import java.util.List;
-import java.util.Map;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
-import org.spongepowered.asm.mixin.gen.Accessor;
+import net.fabricmc.fabric.api.lookup.v1.item.ItemApiLookup;
 
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.feature.StructureFeature;
+/**
+ * An item that may provide an arbitrary text for display.
+ */
+public interface Inspectable {
+	/**
+	 * @return A text to print when a player right-clicks the Inspector block with this item.
+	 */
+	Text inspect();
 
-@Mixin(Biome.class)
-public interface BiomeAccessor {
-	@Accessor("structures")
-	Map<Integer, List<StructureFeature<?>>> getStructureLists();
-
-	@Mutable
-	@Accessor("structures")
-	void setStructureLists(Map<Integer, List<StructureFeature<?>>> field_26634);
+	ItemApiLookup<Inspectable, Void> LOOKUP =
+			ItemApiLookup.get(new Identifier("testmod:inspectable"), Inspectable.class, Void.class);
 }

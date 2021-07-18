@@ -14,18 +14,23 @@
  * limitations under the License.
  */
 
-package net.fabricmc.fabric.impl.structure;
+package net.fabricmc.fabric.test.lookup.item;
 
-import java.util.Collections;
-import java.util.Set;
-import java.util.WeakHashMap;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 
-import net.minecraft.world.gen.chunk.StructuresConfig;
+public class InspectableItem extends Item implements Inspectable {
+	private final String inspectionResult;
 
-public final class FabricStructureUtil {
-	private FabricStructureUtil() { }
+	public InspectableItem(String inspectionResult) {
+		super(new Settings().group(ItemGroup.MISC));
+		this.inspectionResult = inspectionResult;
+	}
 
-	// This tracks all StructuresConfig objects that have been created with the default set of structures
-	// in order to add mod-created structures that are registered later
-	public static final Set<StructuresConfig> DEFAULT_STRUCTURES_CONFIGS = Collections.newSetFromMap(new WeakHashMap<>());
+	@Override
+	public Text inspect() {
+		return new LiteralText(inspectionResult);
+	}
 }
