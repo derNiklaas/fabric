@@ -109,11 +109,13 @@ public abstract class AbstractChanneledNetworkAddon<H> extends AbstractNetworkAd
 	protected abstract void receive(H handler, PacketByteBuf buf);
 
 	protected void sendInitialChannelRegistrationPacket() {
+		/*
 		final PacketByteBuf buf = this.createRegistrationPacket(this.getReceivableChannels());
 
 		if (buf != null) {
 			this.sendPacket(NetworkingImpl.REGISTER_CHANNEL, buf);
 		}
+		*/
 	}
 
 	@Nullable
