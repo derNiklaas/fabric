@@ -87,7 +87,6 @@ def moduleDependencies(project, List<String> depNames) {
 
 allprojects {
 	apply plugin: "java-library"
-	apply plugin: "checkstyle"
 	apply plugin: "maven-publish"
 	apply plugin: "fabric-loom"
 	apply plugin: "org.cadixdev.licenser"
